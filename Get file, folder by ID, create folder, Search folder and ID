@@ -1,0 +1,32 @@
+function getFilesAndFolder() {
+//Get File  by ID
+var file=DriveApp.getFileById("1_eYdGILxexc7JVJGeKjdcGk-lSwawHTgb12boCWIfF4");
+Logger.log(file)
+
+//Get Folder by ID and get list of files inside it
+var files=DriveApp.getFolderById("0Bz7xEwadCXkXSUVhODdGRHVnUkk").getFiles();
+while(files.hasNext())
+{
+  Logger.log(files.next())
+}
+
+//Create Folder
+DriveApp.createFolder("Apps Script")
+
+//Search Folder by contain logic
+var folder=DriveApp.searchFolders("title contains 'youtube'");
+while(folder.hasNext())
+{
+  Logger.log(folder.next())
+
+}
+
+//search File by mime Type
+var files=DriveApp.searchFiles("mimeType contains 'image/' and title contains 'img'");
+while(files.hasNext())
+{
+  Logger.log(files.next())
+}
+
+}
+
